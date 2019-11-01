@@ -1,11 +1,10 @@
 import {connect} from 'react-redux';
-import MovieComponents from '../components/MovieComponents';
+import MovieComponents from '../components/MovieComponent';
 import {addMovieAction, fetchFailedAction, fetchMoviesAction, fetchSuccessAction} from '../actions';
 
 const mapStateToProps = (state) => {
     return {
-        movies: state.movieReducers,
-
+        movies: state.receivedMovies,
     };
 };
 const mapDispatchToProps = (dispatch) => {

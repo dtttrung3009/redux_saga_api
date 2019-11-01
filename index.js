@@ -1,22 +1,28 @@
-/**
- * @format
- */
+/*
+Mr Nguyen Duc Hoang
+https://www.youtube.com/c/nguyenduchoang
+Email: sunlight4d@gmail.com
+Redux Saga in React Native. Example of query movies list
+*/
 
-import {AppRegistry} from 'react-native';
-// import App from './App';
-import {name as appName} from './app.json';
-import React from 'react';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+import React, { Component } from 'react';
+import { AppRegistry } from 'react-native';
+//Redux
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+
 import allReducers from './reducers';
 import MovieContainer from './containers/MovieContainer';
-import rootSaga from './sagas/rootSaga';
+//Redux saga
 import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas/rootSaga';
+import {name as appName} from './app.json';
 const sagaMiddleware = createSagaMiddleware();
+
 let store = createStore(allReducers, applyMiddleware(sagaMiddleware));
 const App = () => (
     <Provider store={store}>
-        <MovieContainer/>
+        <MovieContainer />
     </Provider>
 );
 sagaMiddleware.run(rootSaga);

@@ -1,18 +1,19 @@
-import {ADD_MOVIE, FETCH_FAILED, FETCH_SUCCEEDED, FETCH_MOVIES} from '../actions/actionTypes';
-
+import { ADD_MOVIE, FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED } from '../actions/actionTypes';
 const movieReducers = (movies = [], action) => {
     switch (action.type) {
         case FETCH_SUCCEEDED:
+            console.log(`movies in reducers:   ${action.receivedMovies}`);
             return action.receivedMovies;
         case FETCH_FAILED:
             return [];
         case ADD_MOVIE:
             return [
                 ...movies,
-                action.newMovie,
+                action.newMovie
             ];
         default:
-            return movies;
+            return movies; //state does not change
     }
-};
+}
+
 export default movieReducers;
